@@ -12,9 +12,7 @@ class block_olympiads extends block_base {
     }
 
     public function applicable_formats() {
-        return [
-            'all' => true
-        ];
+        return ['all' => true];
     }
 
     public function instance_allow_multiple() {
@@ -30,12 +28,13 @@ class block_olympiads extends block_base {
 
         $this->content = new stdClass();
 
-        // Ссылки для администратора
+        // 1) Добавить новую олимпиаду
         $url_add      = new moodle_url('/blocks/olympiads/add.php');
+        // 2) Список олимпиад (таблица)
         $url_list     = new moodle_url('/blocks/olympiads/list.php');
-        // Ссылка для абитуриентов — вывод карточек (п.19)
+        // 3) Олимпиады карточками
         $url_view     = new moodle_url('/blocks/olympiads/view.php');
-        // Ссылка для регистрации на олимпиаду (п.21)
+        // 4) Запись на олимпиаду
         $url_register = new moodle_url('/blocks/olympiads/register.php');
 
         $this->content->text  = html_writer::link($url_add,      'Добавить олимпиаду') . html_writer::empty_tag('br');
