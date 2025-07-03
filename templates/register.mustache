@@ -1,0 +1,24 @@
+<h2>Запись на олимпиаду</h2>
+
+<div class="list-group">
+  {{#olympiads}}
+    <div class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{name}}</strong><br>
+        <small>{{startdate}} – {{enddate}}</small>
+      </div>
+      <div>
+        {{#registered}}
+          <span class="badge bg-success">Вы уже записаны</span>
+        {{/registered}}
+        {{^registered}}
+          <form method="post" action="{{registerurl}}" class="m-0">
+            {{{sesskey}}}
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" class="btn btn-primary btn-sm">Записаться</button>
+          </form>
+        {{/registered}}
+      </div>
+    </div>
+  {{/olympiads}}
+</div>
