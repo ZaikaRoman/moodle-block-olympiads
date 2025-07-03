@@ -1,0 +1,16 @@
+<h2>Олимпиады для абитуриентов</h2>
+<div class="d-flex flex-wrap gap-3">
+  {{#olympiads}}
+    <div class="card text-center p-2" style="width: 180px;">
+      <img src="{{imageurl}}" alt="иконка олимпиады"
+           class="card-img-top mx-auto"
+           style="width:100px;height:100px;">
+      <div class="card-body">
+        <div class="card-title">{{name}}</div>
+        <div class="card-text" style="font-size:0.9em; color:#555">
+          {{startdate}} – {{enddate}}
+        </div>
+      </div>
+    </div>
+  {{/olympiads}}
+</div>

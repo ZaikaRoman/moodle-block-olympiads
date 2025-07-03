@@ -1,4 +1,5 @@
 <?php
+defined('MOODLE_INTERNAL') || die();
 
 class block_olympiads extends block_base {
 
@@ -25,13 +26,22 @@ class block_olympiads extends block_base {
             return $this->content;
         }
 
+        global $OUTPUT;
+
         $this->content = new stdClass();
 
-        $url = new moodle_url('/blocks/olympiads/add.php');
-        $list = new moodle_url('/blocks/olympiads/list.php');
+        // Ссылки для администратора
+        $url_add  = new moodle_url('/blocks/olympiads/add.php');
+        $url_list = new moodle_url('/blocks/olympiads/list.php');
+        // Ссылка для абитуриентов — вывод карточек (п.19)
+        $url_view = new moodle_url('/blocks/olympiads/view.php');
 
-        $this->content->text  = html_writer::link($url, 'Добавить олимпиаду') . html_writer::empty_tag('br');
-        $this->content->text .= html_writer::link($list, 'Список олимпиад');
+        $this->content->text  = html_writer::link($url_add,  'Добавить олимпиаду')
+                             . html_writer::empty_tag('br');
+        $this->content->text .= html_writer::link($url_list, 'Список олимпиад')
+                             . html_writer::empty_tag('br');
+        $this->content->text .= html_writer::link($url_view, 'Олимпиады для абитуриентов');
+
         $this->content->footer = '';
 
         return $this->content;
