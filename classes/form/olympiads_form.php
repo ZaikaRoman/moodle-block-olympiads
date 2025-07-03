@@ -6,27 +6,25 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/formslib.php');
 
-class olympiad_form extends \moodleform {
+class olympiads_form extends \moodleform {
 
     public function definition() {
         $mform = $this->_form;
 
-        // Название олимпиады
         $mform->addElement('text', 'name', 'Название олимпиады');
         $mform->setType('name', PARAM_TEXT);
         $mform->addRule('name', 'Обязательное поле', 'required', null, 'client');
 
-        // Описание
-        $mform->addElement('editor', 'description', 'Описание олимпиады');
-        $mform->setType('description', PARAM_RAW);
+        $mform->addElement('textarea', 'description', 'Описание олимпиады',
+                           'wrap="virtual" rows="8" cols="60"');
+        $mform->setType('description', PARAM_TEXT);
 
-        // Дата начала
         $mform->addElement('date_selector', 'startdate', 'Дата начала');
+        $mform->addRule('startdate', 'Обязательное поле', 'required', null, 'client');
 
-        // Дата окончания
         $mform->addElement('date_selector', 'enddate', 'Дата окончания');
+        $mform->addRule('enddate', 'Обязательное поле', 'required', null, 'client');
 
-        // Кнопки
         $this->add_action_buttons(true, 'Сохранить олимпиаду');
     }
 }
